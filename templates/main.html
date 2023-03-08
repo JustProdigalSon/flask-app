@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./main.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>To do list</h1>
+    </header>
+    <form action="/add" method="post">
+        <div>
+            <label for="title">ToDo Title</label>
+            <input type="text" name="title" placeholder="To do ...">
+            <button type="submit">Add</button>
+        </div>
+    </form>
+
+   {% for todo in todo_list %}
+        <p>|#| {{todo.title}} |#| </p>
+
+        {% if todo.completed %}
+            <p>Completed</p>
+        {% else %}
+            <p>Not completed</p>
+        {% endif %}
+
+        <a href="/done/{{ todo.id }}">Done</a>
+        <a href="/delete/{{ todo.id }}">Delete</a>
+    {% endfor %}
+   
+
+
+
+</body>
+</html>
